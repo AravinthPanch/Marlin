@@ -58,7 +58,7 @@
 #ifdef IS_RAMPS_13
   #define SERVO0_PIN        7 // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
 #else
-  #define SERVO0_PIN       11
+  #define SERVO0_PIN        4 //araBot - exchanging with SPINDLE_LASER_ENABLE_PIN
 #endif
 #define SERVO1_PIN          6
 #define SERVO2_PIN          5
@@ -71,7 +71,7 @@
 //
 #define X_MIN_PIN           3
 #ifndef X_MAX_PIN
-  #define X_MAX_PIN         2
+  #define X_MAX_PIN         12 //araBot - exchanging with SPINDLE_LASER_PWM_PIN using D12 pin on MKS_BASE_15
 #endif
 #define Y_MIN_PIN          14
 #define Y_MAX_PIN          15
@@ -272,8 +272,8 @@
 //
 #if ENABLED(SPINDLE_LASER_ENABLE) && !PIN_EXISTS(SPINDLE_LASER_ENABLE)
   #if !defined(NUM_SERVOS) || NUM_SERVOS == 0 // try to use servo connector first
-    #define SPINDLE_LASER_ENABLE_PIN  4  // Pin should have a pullup/pulldown!
-    #define SPINDLE_LASER_PWM_PIN     6  // MUST BE HARDWARE PWM
+    #define SPINDLE_LASER_ENABLE_PIN  11  // Pin should have a pullup/pulldown! //araBot - exchanging SERVO0_PIN
+    #define SPINDLE_LASER_PWM_PIN     2  // MUST BE HARDWARE PWM //araBot - exchanging with X_MAX_PIN
     #define SPINDLE_DIR_PIN           5
   #elif !(ENABLED(ULTRA_LCD) && ENABLED(NEWPANEL) \
       && (ENABLED(PANEL_ONE) || ENABLED(VIKI2) || ENABLED(miniVIKI) || ENABLED(MINIPANEL) || ENABLED(REPRAPWORLD_KEYPAD)))  // try to use AUX 2
